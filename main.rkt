@@ -26,12 +26,20 @@
 ;; Code here
 
 
+
+
 (require racket/list
          racket/string
          racket/format
          gregor
          timable/gregor
          scribble/core)
+
+(provide frog/post/title
+         frog/post/date
+         frog/post/tags
+         frog/post/meta
+         essay-block)
 
 
 (define (frog/post/title . text)
