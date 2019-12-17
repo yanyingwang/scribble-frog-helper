@@ -15,11 +15,11 @@
 @author[(author+email "Yanying Wang" "yanyingwang1@gmail.com")]
 
 @defmodule[scribble-bl-helper]{
-scribble helper functions especially for writing blogs
+scribble helper functions especially for writing blogs with frog.
 }
 
 
-Install this package and run @literal{raco frog/hp -N title} to generate a scribble post with all the functions defined in this lib.
+Install this package and run @litchar{raco frog/hp -N title} to generate a scribble post with all the functions defined in this lib.
 
 
 @examples[
@@ -33,15 +33,15 @@ Install this package and run @literal{raco frog/hp -N title} to generate a scrib
 
 
 @defproc[(title [str string?]) string?]{
-return text: @literal{Title: the post title}
+return text: @litchar{Title: the post title}
 }
 
 
 @defproc[(date [str string?]) string?]{
-return text: @literal{date: the post date}
+return text: @litchar{date: the post date}
 }
 
 
 @defproc[(tags [str string?]) string?]{
-return text: @literal{tags: tag1 tag2 tag3}
+return text: @litchar{tags: tag1 tag2 tag3}
 }
