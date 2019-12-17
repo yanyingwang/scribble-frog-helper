@@ -1,7 +1,8 @@
 #lang scribble/manual
 
 @require[@for-label[scribble-bl-helper
-                    racket/base]]
+                    (except-in racket/base date)]
+         scribble/eval]
 
 
 @(define my-eval
@@ -18,7 +19,7 @@ scribble helper functions especially for writing blogs
 }
 
 
-Install this package and run @racketcode{raco frog/hp -N title} to generate a scribble post with all the functions defined in this lib.
+Install this package and run @literal{raco frog/hp -N title} to generate a scribble post with all the functions defined in this lib.
 
 
 @examples[
@@ -26,6 +27,7 @@ Install this package and run @racketcode{raco frog/hp -N title} to generate a sc
 (title "a test post with scribble-bl-helper")
 (date "2019-1-1")
 (date "2019-1-1 12:01")
+(tags "tag1 tag2 tag3")
 ]
 
 
