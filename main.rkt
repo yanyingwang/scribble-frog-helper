@@ -102,7 +102,7 @@
   (command-line
    #:program (short-program+command-name) #;"raco frog/sbh"
    #:once-each
-   [("-n" "--name")
+   [("-N" "--new-scribble")
     title
     "your title name of the new post"
     (or (file-exists? (build-path (current-directory) "frog.rkt"))
