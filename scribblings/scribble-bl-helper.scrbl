@@ -38,10 +38,10 @@ return text: @litchar{Title: the post title}
 
 
 @defproc[(date [str string?]) string?]{
-return text: @litchar{date: the post date}
+return text: @litchar{Date: the post date}
 }
 
 
 @defproc[(tags [str string?]) string?]{
-return text: @litchar{tags: tag1 tag2 tag3}
+return text: @litchar{Tags: tag1 tag2 tag3}
 }
