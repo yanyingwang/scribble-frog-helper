@@ -84,7 +84,7 @@
   ;; or with `raco test`. The code here does not run when this file is
   ;; required by another module.
 
-  (check-equal? (+ 2 2) 4))
+  #;(check-equal? (+ 2 2) 4))
 
 (module+ main
   ;; (Optional) main submodule. Put code here if you need it to be executed when
@@ -98,9 +98,8 @@
            racket/file
            gregor)
 
-  (require debug/repl)
   (command-line
-   #:program (short-program+command-name) #;"raco frog/sbh"
+   #:program (short-program+command-name)
    #:once-each
    [("-N" "--new-scribble")
     title
@@ -113,24 +112,24 @@
          (error (~a "file already exist: " filepath)))
     (define filecontent @~a{#lang scribble/manual
 
-                            @"@"(require scribble-bl-helper)
-                            @"@"(require (for-label racket)) @"@"; remove this line if no racket doc links needed
+                                  @"@"(require scribble-frog-helper)
+                                  @"@"(require (for-label racket)) @"@"; remove this line if no racket doc links needed
 
-                            @"@"title{@title}
-                            @"@"date{@(datetime->iso8601 (now))}
-                            @"@"tags{DRAFT tag1 tag2}
+                                  @"@"title{@title}
+                                  @"@"date{@(datetime->iso8601 (now))}
+                                  @"@"tags{DRAFT tag1 tag2}
 
 
-                            Replace this with your post text. Add one or more comma-separated
-                            Tags above. The special tag `DRAFT` will prevent the post from being
-                            published. And text before the `more` line will appear in the post
-                            index page as well.
+                                  Replace this with your post text. Add one or more comma-separated
+                                  Tags above. The special tag `DRAFT` will prevent the post from being
+                                  published. And text before the `more` line will appear in the post
+                                  index page as well.
 
-                            <!-- more -->
+                                  <!-- more -->
 
-                            @"@"(table-of-contents) @"@"; remove this line if no toc neeeded.
+                                  @"@"(table-of-contents) @"@"; remove this line if no toc neeeded.
 
-                            You blog content continues here.
-                            })
+                                  You blog content continues here.
+                                  })
     (display-to-file filecontent filepath)
     (displayln filepath)]))

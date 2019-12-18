@@ -1,3 +1,3 @@
-scribble-bl-helper
+scribble-frog-helper
 ==================
 README text here.
