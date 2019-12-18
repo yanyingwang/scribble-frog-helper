@@ -96,7 +96,7 @@ return text: @litchar{Tags: tag1 tag2 tag3}
 
 
 @defproc[(meta [str string?]) string?]{
-return texts of @racket{title}, @racket{date}, and @racket{meta}
+return texts of @racket[title], @racket[date], and @racket[tags]
 }
 
 @defproc[(essay [str string?]) string?]{
