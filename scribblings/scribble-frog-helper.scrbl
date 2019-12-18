@@ -30,7 +30,7 @@ run @litchar{raco frog/hp -N title} to generate a scribble post with all the fun
 
 
 @section{examples}
-a real usage of blog post:
+a real usage within a blog post:
 @codeblock|{
 #lang scribble/manual
 
