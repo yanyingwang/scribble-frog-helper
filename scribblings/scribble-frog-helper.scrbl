@@ -56,7 +56,7 @@ a real usage within a blog post:
 }
 }|
 
-And I have a blog post using this lib, you can also check @hyperlink["https://yanyingwang.github.io/2007/03/-%E6%88%91%E8%AF%B4.html" "that"] for the html shown.
+And I have a blog post using this lib, you can also check @hyperlink["https://yanyingwang.github.io/2007/03/-%E6%88%91%E8%AF%B4.html" "that"] for the html shown result.
 
 
 @section{procedures}
