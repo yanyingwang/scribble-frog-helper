@@ -24,8 +24,9 @@ Scribble helper functions especially for writing blogs with frog.
 @(table-of-contents)
 
 @section{raco cmd}
-Install this package first and then,
-run @litchar{raco frog/hp -N title} to generate a scribble post with all the functions defined by this lib.
+Install this package first and then run
+@nested[#:style 'inset]{@exec{$ raco frog/hp -N title}}
+to generate a scribble post with all the functions defined by this lib.
 
 
 
