@@ -80,25 +80,23 @@ And I also have a blog post using this lib, you can check @hyperlink["https://ya
 ]
 
 
-@defproc[(title [str string?]) string?]{
-return text: @litchar{Title: the post title}
+@defproc[(title [str string?]) list?]{
+return list of elements rendered to be: @litchar{Title: the post title}
 }
 
-
-@defproc[(date [str string?]) string?]{
-return text: @litchar{Date: the post date}
+@defproc[(date [str string?]) list?]{
+return list of elements rendered to be: @litchar{Date: the post date}
 }
 
-
-@defproc[(tags [str string?]) string?]{
-return text: @litchar{Tags: tag1 tag2 tag3}
+@defproc[(tags [str string?]) list?]{
+return list of elements rendered to be: @litchar{Tags: tag1 tag2 tag3}
 }
 
-
-@defproc[(meta [str string?]) string?]{
-return texts of @racket[title], @racket[date], and @racket[tags]
+@defproc[(meta [str string?]) list?]{
+return list of elements with @racket[title], @racket[date], and @racket[tags].
 }
 
-@defproc[(essay [str string?]) string?]{
-return an essay for the string.
+@defproc[(essay [str string?])
+          list?]{
+return an essay for the @racket[str].
 }
