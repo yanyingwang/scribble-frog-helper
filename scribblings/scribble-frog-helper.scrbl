@@ -15,7 +15,7 @@
 @author[(author+email "Yanying Wang" "yanyingwang1@gmail.com")]
 
 @defmodule[scribble-frog-helper]{
-Scribble helper functions especially for writing blogs with frog.
+Scribble helper functions especially for writing blogs with frog. Related to:
 @itemlist[
 @item{@other-doc['(lib "scribblings/scribble/scribble.scrbl")]}
 @item{@other-doc['(lib "frog/frog.scrbl")]}
@@ -57,7 +57,7 @@ a real usage within a blog post:
 }
 }|
 
-And I have a blog post using this lib, you can also check @hyperlink["https://yanyingwang.github.io/2007/03/-%E6%88%91%E8%AF%B4.html" "that"] for the html shown result.
+And I also have a blog post using this lib, you can check @hyperlink["https://yanyingwang.github.io/2007/03/-%E6%88%91%E8%AF%B4.html" "that"] for the html shown result.
 
 
 @section{procedures}
