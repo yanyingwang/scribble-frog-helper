@@ -15,12 +15,13 @@
 @author[(author+email "Yanying Wang" "yanyingwang1@gmail.com")]
 
 @defmodule[scribble-frog-helper]{
-Scribble helper functions especially for writing blogs with frog. Related to:
+racket[Scribble] helper functions especially for writing blogs with racket[frog]. Related to:
 @itemlist[
 @item{@other-doc['(lib "scribblings/scribble/scribble.scrbl")]}
 @item{@other-doc['(lib "frog/frog.scrbl")]}
 ]}
 
+INDEX:
 @(table-of-contents)
 
 @section{raco cmd}
@@ -31,7 +32,7 @@ to generate a scribble post with all the functions defined by this lib.
 
 
 @section{examples}
-a real usage within a blog post:
+a practical usage within a blog post:
 @codeblock|{
 #lang scribble/manual
 

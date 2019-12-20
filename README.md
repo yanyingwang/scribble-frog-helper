@@ -1,3 +1,3 @@
 scribble-frog-helper
 ==================
-README text here.
+https://docs.racket-lang.org/scribble-frog-helper/index.html
