@@ -1,6 +1,6 @@
 #lang info
 (define collection "scribble-frog-helper")
-(define deps '("base" "gregor" "timable" "frog" "at-exp-lib" "scribble-lib" "racket-doc"))
+(define deps '("base" "gregor" "timable" "frog" "at-exp-lib"))
 (define build-deps '("scribble-lib" "racket-doc" "rackunit-lib"))
 (define scribblings '(("scribblings/scribble-frog-helper.scrbl" ())))
 (define pkg-desc "scribble helper functions especially for writing blogs with frog")
