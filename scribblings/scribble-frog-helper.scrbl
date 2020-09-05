@@ -26,7 +26,7 @@ INDEX:
 
 @section{raco cmd}
 Install this package first and then run
-@nested[#:style 'inset]{@exec{$ raco frog/hp -N title}}
+@nested[#:style 'inset]{@exec{$ raco frog/helper -N title}}
 to generate a scribble post with all the functions defined by this lib.
 
 
@@ -79,6 +79,11 @@ And I also have a blog post using this lib, you can check @hyperlink["https://ya
 鹏之背，不知其几千里也。
 }
 ]
+
+
+@defproc[(post-url [str string?]) string?]{
+return a html link of a post of frog website. Example: @racket[@post-url{2013-06-19-a-scribble-post}]
+}
 
 
 @defproc[(title [str string?]) list?]{

@@ -33,14 +33,15 @@
          racket/format
          gregor
          timable/gregor
-         scribble/core)
+         scribble/core
+         scribble/base)
 
-(provide title
-         date
-         tags
-         meta
-         essay)
+(provide (all-defined-out))
 
+(define (post-url str)
+  (define lst (string-split str "-"))
+  (define name (string-join (drop lst 3) "-"))
+  (hyperlink @~a{/@(first lst)/@(second lst)/@|name|.html} name))
 
 (define (title . text)
   (list* "Title: " text))

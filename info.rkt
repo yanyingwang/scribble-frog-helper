@@ -6,4 +6,4 @@
 (define pkg-desc "scribble helper functions especially for writing blogs with frog")
 (define version "0.1")
 (define pkg-authors '("Yanying Wang"))
-(define raco-commands '(("frog/hp" (submod scribble-frog-helper main) "generate a frog Scribble Blog post with extended Helper functions" #f)))
+(define raco-commands '(("frog/helper" (submod scribble-frog-helper main) "generate a frog Scribble Blog post with extended Helper functions" #f)))
