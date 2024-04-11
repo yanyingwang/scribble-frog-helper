@@ -99,6 +99,10 @@
            racket/file
            gregor)
 
+  (define (strip-iso8601-nanoseconds str)
+    (define segments (string-split str "."))
+    (car segments))
+
   (define command (make-parameter #f))
   (define post-title (make-parameter #f))
   (define skip-frog-check? (make-parameter #f))
@@ -137,7 +141,7 @@
                              @"@"(require (for-label racket)) @"@"; remove this line if no racket doc links needed
 
                              @"@"title{@(post-title)}
-                             @"@"date{@(datetime->iso8601 (now))}
+                             @"@"date{@(strip-iso8601-nanoseconds (datetime->iso8601 (now)))}
                              @"@"tags{DRAFT tag1 tag2}
 
 
