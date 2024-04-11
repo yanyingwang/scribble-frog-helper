@@ -106,7 +106,8 @@
     title
     "your title name of the new post"
     (or (file-exists? (build-path (current-directory) "frog.rkt"))
-        (error "`frog.rkt` not found, you may want to run `raco frog --init` first."))
+        (file-exists? (build-path (current-directory) "darwin.rkt"))
+        (error "`frog.rkt` or `darwin.rkt` not found, you may want to run `raco frog --init` first."))
     (define filename @string-append{_src/posts/@|(date->iso8601 (current-date))|-@|title|.scrbl})
     (define filepath (build-path (current-directory) filename))
     (and (file-exists? filepath)
