@@ -10,6 +10,16 @@
                         timable/convert
                         timable/gregor)))
 
+@;;; Works like other-doc, except if the module being linked to isn't installed then it links to the
+@;;; public page on docs.racket-lang.org instead.
+@(define (other-doc* mod fallback-url fallback-name)
+   (define (module-exists? path)
+     (with-handlers ([exn:fail:filesystem:missing-module? (λ (e) #f)])
+       (boolean? (module-declared? path))))
+   (if (module-exists? mod)
+       (other-doc mod)
+       (hyperlink fallback-url fallback-name)))
+
 
 @title{scribble-frog-helper}
 @author[(author+email "Yanying Wang" "yanyingwang1@gmail.com")]
@@ -18,7 +28,8 @@
 racket[Scribble] helper functions especially for writing blogs with racket[frog]. Related to:
 @itemlist[
 @item{@other-doc['(lib "scribblings/scribble/scribble.scrbl")]}
-@item{@other-doc['(lib "frog/frog.scrbl")]}
+@item{@other-doc*['(lib "frog/frog.scrbl") "https://docs.racket-lang.org/frog/index.html" "Frog"]}
+@item{@other-doc*['(lib "darwin/darwin.scrbl") "https://docs.racket-lang.org/darwin@darwin/index.html" "Darwin"]}
 ]}
 
 INDEX:
@@ -27,7 +38,11 @@ INDEX:
 @section{raco cmd}
 Install this package first and then run
 @nested[#:style 'inset]{@exec{$ raco frog/helper -N title}}
-to generate a scribble post with all the functions defined by this lib.
+to generate a scribble post with all the functions defined by this lib. This requires the current
+directory to be a valid Frog or Darwin blog.
+
+The optional the @exec{-f}/@exec{--force} flag will force it to proceed regardless of where it is run.
+Doing so will create the @exec{_src/posts/} directory if it does not already exist.
 
 
 

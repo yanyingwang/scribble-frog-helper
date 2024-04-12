@@ -99,38 +99,62 @@
            racket/file
            gregor)
 
+  (define (strip-iso8601-nanoseconds str)
+    (define segments (string-split str "."))
+    (car segments))
+
+  (define command (make-parameter #f))
+  (define post-title (make-parameter #f))
+  (define skip-frog-check? (make-parameter #f))
+  (define make-missing-directories? (make-parameter #f))
+
   (command-line
    #:program (short-program+command-name)
-   #:once-each
+   #:once-any ; only one command at a time
    [("-N" "--new-scribble")
     title
     "your title name of the new post"
-    (or (file-exists? (build-path (current-directory) "frog.rkt"))
-        (error "`frog.rkt` not found, you may want to run `raco frog --init` first."))
-    (define filename @string-append{_src/posts/@|(date->iso8601 (current-date))|-@|title|.scrbl})
-    (define filepath (build-path (current-directory) filename))
-    (and (file-exists? filepath)
-         (error (~a "file already exist: " filepath)))
-    (define filecontent @~a{#lang scribble/manual
+    (command 'new-scribble-post)
+    (post-title title)]
+   #:once-each ; flags
+   [("-f" "--force")
+    "Skip checks that we are in a valid frog or darwin blog"
+    (skip-frog-check? #t)
+    (make-missing-directories? #t)])
 
-                            @"@"(require scribble-frog-helper)
-                            @"@"(require (for-label racket)) @"@"; remove this line if no racket doc links needed
+  (case (command)
+    [(new-scribble-post)
+     (unless (skip-frog-check?)
+       (or (file-exists? (build-path (current-directory) "frog.rkt"))
+           (file-exists? (build-path (current-directory) "darwin.rkt"))
+           (error "`frog.rkt` or `darwin.rkt` not found, you may want to run `raco frog --init` first.")))
+     (define filename @string-append{_src/posts/@|(date->iso8601 (current-date))|-@|(post-title)|.scrbl})
+     (define filepath (build-path (current-directory) filename))
+     (when (make-missing-directories?)
+       (let-values ([(base name must-be-dir?) (split-path filepath)])
+         (make-directory* base)))
+     (and (file-exists? filepath)
+          (error (~a "file already exist: " filepath)))
+     (define filecontent @~a{#lang scribble/manual
 
-                            @"@"title{@title}
-                            @"@"date{@(datetime->iso8601 (now))}
-                            @"@"tags{DRAFT tag1 tag2}
+                             @"@"(require scribble-frog-helper)
+                             @"@"(require (for-label racket)) @"@"; remove this line if no racket doc links needed
+
+                             @"@"title{@(post-title)}
+                             @"@"date{@(strip-iso8601-nanoseconds (datetime->iso8601 (now)))}
+                             @"@"tags{DRAFT tag1 tag2}
 
 
-                            Replace this with your post text. Add one or more comma-separated
-                            Tags above. The special tag `DRAFT` will prevent the post from being
-                            published. And text before the `more` line will appear in the post
-                            index page as well.
+                             Replace this with your post text. Add one or more comma-separated
+                             Tags above. The special tag `DRAFT` will prevent the post from being
+                             published. And text before the `more` line will appear in the post
+                             index page as well.
 
-                            <!-- more -->
+                             <!-- more -->
 
-                            @"@"(table-of-contents) @"@"; remove this line if no toc neeeded.
+                             @"@"(table-of-contents) @"@"; remove this line if no toc neeeded.
 
-                            You blog content continues here.
-                            })
-    (display-to-file filecontent filepath)
-    (displayln filepath)]))
+                             You blog content continues here.
+                             })
+     (display-to-file filecontent filepath)
+     (displayln filepath)]))
